@@ -302,7 +302,7 @@ footer b{color:var(--gold2)}
 <a class="wa" href="https://wa.me/213790142037" target="_blank" rel="noopener">واتساب</a>
 
 <script>
-const HOOK=""; // يُربط بـ webhook n8n عند النشر على الدومين
+const HOOK="https://script.google.com/macros/s/AKfycbyaZ7QdIxcFidk8WoS5QXBM5jdYS7GgURyXIiXt4_21fz3-Ne9vyRJEZbJpSzHrIuI0/exec";
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 function tick(){
   const t=new Date("2026-12-07T10:00:00+01:00")-new Date();
@@ -315,7 +315,7 @@ $('#rf').addEventListener('submit',async e=>{
   e.preventDefault();const f=e.target;let ok=true;
   $$('input',f).forEach(el=>{const r=rules[el.name];const g=r?r(el.value):el.value.trim().length>0;el.closest('.f').classList.toggle('bad',!g);if(!g)ok=false});
   if(!ok){const b=$('.bad',f);b&&b.scrollIntoView({block:'center',behavior:'smooth'});return}
-  if(HOOK){try{await fetch(HOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.fromEntries(new FormData(f)))})}catch(_){}}
+  if(HOOK){const pl=Object.fromEntries(new FormData(f));pl.source='content.dounia1acdemy.com';try{await fetch(HOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(pl)})}catch(_){$('#ok').style.display='none';alert('تعذّر الإرسال، تأكدي من الاتصال أو راسليني على واتساب 0790142037');return}}
   $('#ok').style.display='block';f.reset();
 });
 </script>
